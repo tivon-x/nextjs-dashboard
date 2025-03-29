@@ -2,6 +2,8 @@ import bcrypt from "bcryptjs"
 import postgres from "postgres"
 import { invoices, customers, revenue, users } from "../lib/placeholder-data"
 
+console.log("Seeding database...")
+
 const sql = postgres(process.env.POSTGRES_URL!, { ssl: "require" })
 
 async function seedUsers() {
@@ -25,6 +27,7 @@ async function seedUsers() {
       `
     })
   )
+  console.log("Users seeded successfully")
 
   return insertedUsers
 }
@@ -51,6 +54,7 @@ async function seedInvoices() {
       `
     )
   )
+  console.log("Invoices seeded successfully")
 
   return insertedInvoices
 }
@@ -76,7 +80,7 @@ async function seedCustomers() {
       `
     )
   )
-
+  console.log("Customers seeded successfully")
   return insertedCustomers
 }
 
@@ -97,7 +101,7 @@ async function seedRevenue() {
       `
     )
   )
-
+  console.log("Revenue seeded successfully")
   return insertedRevenue
 }
 
